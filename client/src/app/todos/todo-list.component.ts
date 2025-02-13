@@ -14,7 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { catchError, combineLatest, of, switchMap, tap } from 'rxjs';
 import { Todo } from './todo';
-import { TodoCardComponent } from './todo-card.component';
+// import { TodoListComponent } from './todo-list.component';
 import { TodoService } from './todo.service';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 
@@ -23,7 +23,7 @@ import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-todo-list-component',
   templateUrl: 'todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss'],
+  styleUrls: [],
   providers: [],
   imports: [
     MatCardModule,
