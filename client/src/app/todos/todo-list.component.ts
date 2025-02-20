@@ -62,6 +62,7 @@ export class TodoListComponent {
     private todoCategory$ = toObservable(this.todoCategory);
 
 
+
     serverFilteredTodos =
 
       toSignal(
@@ -97,6 +98,10 @@ export class TodoListComponent {
         return this.todoService.filterTodos(serverFilteredTodos, {
           owner: this.todoOwner(),
           category: this.todoCategory(),
+          body:this.todoBody(),
+          status:this.todoStatus(),
+
+
         });
       });
   }

@@ -66,12 +66,12 @@
           @if (serverFilteredTodos()) {
             <ol>
               @for (todo of filteredTodos(); track todo._id) {
-                <li data-test="todo"><div data-test="todoOwner">{{ todo.owner }}</div>
+                <li data-test="todo">
                   <ul>
-                    <li>Category:<div data-test="todoCategory">{{ todo.category }}</div>
-                     </li>
-                      <li data-test="todo"><div data-test="todoBody">{{ todo.body }}</div>
-                        <li data-test="todo"><div data-test="todoStatus">{{ todo.status }}</div>
+                    <li><div data-test="todoOwner">Owner: {{ todo.owner }}</div></li>
+                    <li><div data-test="todoCategory">Category: {{ todo.category }}</div></li>
+                    <li><div data-test="todoBody">Body: {{ todo.body }}</div></li>
+                    <li><div data-test="todoStatus">Status: {{ todo.status }}</div></li>
                   </ul>
                 </li>
               }

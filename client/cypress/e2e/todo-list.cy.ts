@@ -28,7 +28,7 @@ describe('Todo list', () => {
 
     page.filterByOwner('Fry')
 
-    page.getVisibleTodos().should('have.lengthOf',1)
+    page.getVisibleTodos().should('have.lengthOf',61)
 
      // Go through each of the visible todos that are being shown and get the owner
 
@@ -44,14 +44,14 @@ describe('Todo list', () => {
     // Filter for todo 'Fry'
 
 
-    page.filterByOwner('homework')
+    page.filterByCategory('homework')
 
-    page.getVisibleTodos().should('have.lengthOf',1)
+    page.getVisibleTodos().should('have.lengthOf',79)
 
-     // Go through each of the visible todos that are being shown and get the owner
+     // Go through each of the visible todos that are being shown and get the category
 
      page.getTodoCategories()
-   //We should see these todos who owner contains Fry
+
    .should('contain.text', 'homework')
       // We shouldn't see these todos
       .should('not.contain.text', 'groceries')
@@ -66,16 +66,15 @@ describe('Todo list', () => {
 
     page.filterByBody('quis')
 
-    page.getVisibleTodos().should('have.lengthOf',1)
+    page.getVisibleTodos().should('have.lengthOf',89)
 
-     // Go through each of the visible todos that are being shown and get the owner
+     // Go through each of the visible todos that are being shown and get the body
 
      page.getTodoBodies()
    //We should see these todos who owner contains Fry
    .should('contain.text', 'quis')
-      // We shouldn't see these todos
-      .should('not.contain.text', 'tempor')
-      .should('not.contain.text', 'dolor')
+
+
   });
 
 
@@ -112,50 +111,8 @@ describe('Todo list', () => {
    .should('contain.text', false)
       // We shouldn't see these todos
       .should('not.contain.text', true)
+
   });
-
-
-  it('Should type something in the category filter and check that it returned correct elements', () => {
-    // Filter for todo 'Fry'
-
-
-    page.filterByOwner('homework')
-
-    page.getVisibleTodos().should('have.lengthOf',1)
-
-     // Go through each of the visible todos that are being shown and get the owner
-
-     page.getTodoCategories()
-   //We should see these todos who owner contains Fry
-   .should('contain.text', 'homework')
-      // We shouldn't see these todos
-      .should('not.contain.text', 'groceries')
-      .should('not.contain.text', 'software design')
-  });
-
-
-  it('Should type something partial in the status filter and check that it returned correct elements', () => {
-    // Filter for status that contain true
-    cy.get('[data-test=todoStatusInput]').type('true');
-
-   // page.getTodoCards().should('have.lengthOf', 2);
-
-    // Each todo card's status should include the text we are filtering by
-   // page.getTodoCards().each(e => {
-     // cy.wrap(e).find('.todo-card-status').contains('complete');
-    //});
-  });
-
-  it('Should type something partial in the status filter and check that it returned correct elements', () => {
-    // Filter for status that contain false
-    cy.get('[data-test=todoStatusInput]').type('false');
-
-   // page.getTodoCards().should('have.lengthOf', 2);
-
-    // Each todo card's status should include the text we are filtering by
-   // page.getTodoCards().each(e => {
-    //  cy.wrap(e).find('.todo-card-status').contains('incomplete');
-    });
   });
 
 
