@@ -78,6 +78,43 @@ describe('Todo list', () => {
       .should('not.contain.text', 'dolor')
   });
 
+
+
+  it('Should type complete in the status filter and check that it returned true correct elements', () => {
+    // Filter for todo 'Fry'
+
+
+    page.filterByStatus(true)
+
+    page.getVisibleTodos().should('have.lengthOf',1)
+
+     // Go through each of the visible todos that are being shown and get the owner
+
+     page.getTodoStatuses()
+   //We should see these todos who owner contains Fry
+   .should('contain.text', true)
+      // We shouldn't see these todos
+      .should('not.contain.text', false)
+  });
+
+  it('Should type incomplete in the status filter and check that it returned false correct elements', () => {
+    // Filter for todo 'Fry'
+
+
+    page.filterByStatus(false)
+
+    page.getVisibleTodos().should('have.lengthOf',1)
+
+     // Go through each of the visible todos that are being shown and get the owner
+
+     page.getTodoStatuses()
+   //We should see these todos who owner contains Fry
+   .should('contain.text', false)
+      // We shouldn't see these todos
+      .should('not.contain.text', true)
+  });
+
+
   it('Should type something in the category filter and check that it returned correct elements', () => {
     // Filter for todo 'Fry'
 

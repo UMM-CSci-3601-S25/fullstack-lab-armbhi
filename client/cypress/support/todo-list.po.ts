@@ -13,6 +13,8 @@ export class TodoListPage {
   private readonly todoCategoryFilter = '[data-test=todoCategoryFilter]';
   private readonly todoBody = '[data-test=todoBody]';
   private readonly todoBodyFilter = '[data-test=todoBodyFilter]';
+  private readonly todoStatus = '[data-test=todoStatus]';
+  private readonly todoStatusFilter = '[data-test=todoStatusFilter]';
   private readonly radioButtonSelector = '[data-test=viewTypeRadio] mat-radio-button';
   private readonly todoRoleDropdownSelector = '[data-test=todoRoleSelect]';
   private readonly dropdownOptionSelector = 'mat-option';
