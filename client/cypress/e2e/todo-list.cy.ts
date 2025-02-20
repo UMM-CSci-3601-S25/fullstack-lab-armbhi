@@ -41,51 +41,59 @@ describe('Todo list', () => {
   });
 
   it('Should type something in the category filter and check that it returned correct elements', () => {
-    // Filter for category 'video games'
-    cy.get('[data-test=todoCategoryInput]').type('video games');
+    // Filter for todo 'Fry'
 
-    //page.getTodoCards().should('have.lengthOf.above', 0);
 
-    // All of the todo cards should have the category we are filtering by
-   // page.getTodoCards().find('.todo-card-category').each(card => {
-     // cy.wrap(card).should('have.text', 'video games');
-    //});
+    page.filterByOwner('homework')
+
+    page.getVisibleTodos().should('have.lengthOf',1)
+
+     // Go through each of the visible todos that are being shown and get the owner
+
+     page.getTodoCategories()
+   //We should see these todos who owner contains Fry
+   .should('contain.text', 'homework')
+      // We shouldn't see these todos
+      .should('not.contain.text', 'groceries')
+      .should('not.contain.text', 'software design')
   });
 
-  it('Should type something partial in the category filter and check that it returned correct elements', () => {
-    // Filter for category that contain 'homework'
-    cy.get('[data-test=todoCategoryInput]').type('homework');
 
-    //page.getTodoCards().should('have.lengthOf', 2);
 
-    // Each todo card's category name should include the text we are filtering by
-    //page.getTodoCards().each(e => {
-    //  cy.wrap(e).find('.todo-card-category').should('include.text', 'homework');
-    //});
+  it('Should type something in the body filter and check that it returned correct elements', () => {
+    // Filter for todo 'Fry'
+
+
+    page.filterByBody('quis')
+
+    page.getVisibleTodos().should('have.lengthOf',1)
+
+     // Go through each of the visible todos that are being shown and get the owner
+
+     page.getTodoBodies()
+   //We should see these todos who owner contains Fry
+   .should('contain.text', 'quis')
+      // We shouldn't see these todos
+      .should('not.contain.text', 'tempor')
+      .should('not.contain.text', 'dolor')
   });
 
-  it('Should type something partial in the body filter and check that it returned correct elements', () => {
-    // Filter for body that contain 'quis'
-    cy.get('[data-test=todoBodyInput]').type('quis');
+  it('Should type something in the category filter and check that it returned correct elements', () => {
+    // Filter for todo 'Fry'
 
-   // page.getTodoCards().should('have.lengthOf', 2);
 
-    // Each todo card's body name should include the text we are filtering by
-    //page.getTodoCards().each(e => {
-     // cy.wrap(e).find('.todo-card-body').should('include.text', 'quis');
-  //  });
-  });
+    page.filterByOwner('homework')
 
-  it('Should type something in the limit filter and check that it returned correct elements', () => {
-    // Filter for limit
-    cy.get('[data-test=todoLimitInput]').type('7');
+    page.getVisibleTodos().should('have.lengthOf',1)
 
-   // page.getTodoCards().should('have.lengthOf.above', 0);
+     // Go through each of the visible todos that are being shown and get the owner
 
-    // All of the todo cards should have the limit we are filtering by
-   // page.getTodoCards().find('.todo-card-limit').each(card => {
-    //  cy.wrap(card).should('have.lengthOf', '7');
-   // });
+     page.getTodoCategories()
+   //We should see these todos who owner contains Fry
+   .should('contain.text', 'homework')
+      // We shouldn't see these todos
+      .should('not.contain.text', 'groceries')
+      .should('not.contain.text', 'software design')
   });
 
 

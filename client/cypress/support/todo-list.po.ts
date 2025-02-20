@@ -10,8 +10,9 @@ export class TodoListPage {
   private readonly todoOwnerFilter = '[data-test=todoOwnerFilter]';
   private readonly todoOwner = '[data-test=todoOwner]';
   private readonly todoCategory = '[data-test=todoCategory]';
-
   private readonly todoCategoryFilter = '[data-test=todoCategoryFilter]';
+  private readonly todoBody = '[data-test=todoBody]';
+  private readonly todoBodyFilter = '[data-test=todoBodyFilter]';
   private readonly radioButtonSelector = '[data-test=viewTypeRadio] mat-radio-button';
   private readonly todoRoleDropdownSelector = '[data-test=todoRoleSelect]';
   private readonly dropdownOptionSelector = 'mat-option';
@@ -42,6 +43,32 @@ export class TodoListPage {
   filterByOwner(owner: string) {
     return cy.get(this.todoOwnerFilter).type(owner.toString());
   }
+
+  getTodoCategories() {
+    return cy.get(this.todoCategory);
+  }
+
+  filterByCategory(category: string) {
+    return cy.get(this.todoCategoryFilter).type(category.toString());
+  }
+
+  getTodoBodies() {
+    return cy.get(this.todoBody);
+  }
+
+  filterByBody(body: string) {
+    return cy.get(this.todoBodyFilter).type(body.toString());
+  }
+
+  getTodoStatuses() {
+    return cy.get(this.todoStatus);
+  }
+
+  filterByStatus(status: boolean) {
+    return cy.get(this.todoStatusFilter).type(status.toString());
+  }
+
+
 
   getTodoListItems() {
     return cy.get(this.todoListItemsSelector);
