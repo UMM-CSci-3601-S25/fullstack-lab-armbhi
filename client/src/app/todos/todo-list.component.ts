@@ -48,7 +48,7 @@ export class TodoListComponent {
    todoCategory = signal<string | undefined>(undefined);
    todoLimit = signal<string | undefined>(undefined);
    todoStatus = signal<boolean | undefined>(undefined);
-   todoSort = signal<boolean | undefined>(undefined);
+   todoSort = signal<string | undefined>(undefined);
 
 
    viewType = signal<'card' | 'list'>('card');
@@ -72,13 +72,14 @@ export class TodoListComponent {
     serverFilteredTodos =
 
       toSignal(
-        combineLatest([this.todoCategory$, this.todoStatus$, this.todoLimit$]).pipe(
+        combineLatest([this.todoCategory$, this.todoStatus$, this.todoLimit$, this.todoSort$]).pipe(
 
-          switchMap(([category,status,limit]) =>
+          switchMap(([category,status,limit,sort]) =>
             this.todoService.getTodos({
               category,
               status,
               limit,
+              sort,
 
             })
           ),
