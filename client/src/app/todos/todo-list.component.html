@@ -65,7 +65,7 @@
                     <li><div data-test="todoOwner">Owner: {{ todo.owner }}</div></li>
                     <li><div data-test="todoCategory">Category: {{ todo.category }}</div></li>
                     <li><div data-test="todoBody">Body: {{ todo.body }}</div></li>
-                    <li><div data-test="todoStatus">Status: {{ todo.status==true ? 'Complete' : 'Incomplete' }}</div></li>
+                    <li><div data-test="todoStatus">Status: {{ todo.status===true ? 'Complete' : 'Incomplete' }}</div></li>
                   </ul>
                 </li>
 
