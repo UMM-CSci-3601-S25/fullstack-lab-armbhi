@@ -32,8 +32,8 @@ export class TodoService {
       if (filters.owner) {
         httpParams = httpParams.set(this.ownerKey, filters.owner);
       }
-      if (filters.status) {
-        httpParams = httpParams.set(this.statusKey, filters.status);
+      if (filters.status !== undefined) {
+        httpParams = httpParams.set('status', filters.status);
       }
       if (filters.category) {
         httpParams = httpParams.set(this.categoryKey, filters.category);
@@ -75,12 +75,12 @@ export class TodoService {
       filteredTodos = filteredTodos.filter(todo => todo.body.toLowerCase().indexOf(filters.body) !== -1);
     }
 
-    // Filter by status
-    if (filters.status) {
-      filteredTodos = filteredTodos.filter(todo => todo.status === filters.status);
-    }
-    return filteredTodos;
-  }
+    // // Filter by status
+    // if (filters.status !== undefined) {
+    //  HttpParams = httpParams.set('status', filters.status);
+    // }
+     return filteredTodos;
+   }
 
 
   addTodo(newTodo: Partial<Todo>): Observable<string> {
