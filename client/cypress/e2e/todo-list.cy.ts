@@ -41,78 +41,67 @@ describe('Todo list', () => {
   });
 
   it('Should type something in the category filter and check that it returned correct elements', () => {
-    // Filter for todo 'Fry'
+    // Filter for category 'homework'
+    page.filterByCategory('homework');
 
+    page.getVisibleTodos().should('have.lengthOf', 79);
 
-    page.filterByCategory('homework')
-
-    page.getVisibleTodos().should('have.lengthOf',79)
-
-     // Go through each of the visible todos that are being shown and get the category
-
-     page.getTodoCategories()
-
-   .should('contain.text', 'homework')
+    // Go through each of the visible todos that are being shown and get the category
+    page.getTodoCategories()
+      .should('contain.text', 'homework')
       // We shouldn't see these todos
       .should('not.contain.text', 'groceries')
       .should('not.contain.text', 'software design')
+      .should('not.contain.text', 'video games');
   });
 
 
 
   it('Should type something in the body filter and check that it returned correct elements', () => {
-    // Filter for todo 'Fry'
-
-
+    // Filter for todo body containing 'quis'
     page.filterByBody('quis')
 
-    page.getVisibleTodos().should('have.lengthOf',89)
+    page.getVisibleTodos().should('have.lengthOf', 89)
 
-     // Go through each of the visible todos that are being shown and get the body
-
-     page.getTodoBodies()
-   //We should see these todos who owner contains Fry
-   .should('contain.text', 'quis')
-
-
+    // Go through each of the visible todos that are being shown and get the body
+    page.getTodoBodies()
+      //We should see these todos who owner contains Fry
+      .should('contain.text', 'quis');
   });
 
 
 
   it('Should type complete in the status filter and check that it returned true correct elements', () => {
-    // Filter for todo 'Fry'
+    // Filter for status 'complete'
+    page.filterByStatus('complete');
 
-
-    page.filterByStatus(true)
-
-    page.getVisibleTodos().should('have.lengthOf',1)
+    page.getVisibleTodos().should('have.lengthOf', 143)
 
      // Go through each of the visible todos that are being shown and get the owner
 
      page.getTodoStatuses()
-   //We should see these todos who owner contains Fry
-   .should('contain.text', true)
+      //We should see these todos who owner contains Fry
+      .should('contain.text', 'Complete')
       // We shouldn't see these todos
-      .should('not.contain.text', false)
+      .should('not.contain.text', 'Incomplete')
   });
 
-  it('Should type incomplete in the status filter and check that it returned false correct elements', () => {
+  it('Should type incomplete in the status filter and check that it returned incomplete elements', () => {
     // Filter for todo 'Fry'
 
 
-    page.filterByStatus(false)
+    page.filterByStatus('incomplete')
 
-    page.getVisibleTodos().should('have.lengthOf',1)
+    page.getVisibleTodos().should('have.lengthOf', 157)
 
-     // Go through each of the visible todos that are being shown and get the owner
-
-     page.getTodoStatuses()
-   //We should see these todos who owner contains Fry
-   .should('contain.text', false)
+    // Go through each of the visible todos that are being shown and get the owner
+    page.getTodoStatuses()
+      //We should see these todos who owner contains Fry
+      .should('contain.text', 'Incomplete')
       // We shouldn't see these todos
-      .should('not.contain.text', true)
+      .should('not.contain.text', 'Complete')
 
   });
-  });
+});
 
 
