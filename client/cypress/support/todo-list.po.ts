@@ -51,7 +51,9 @@ export class TodoListPage {
   }
 
   filterByCategory(category: string) {
-    return cy.get(this.todoCategoryFilter).type(category.toString());
+    cy.get(this.todoCategoryFilter).click().then(() => {
+      return cy.get(`[value="${category}"]`).click();
+    })
   }
 
   getTodoBodies() {
@@ -66,8 +68,10 @@ export class TodoListPage {
     return cy.get(this.todoStatus);
   }
 
-  filterByStatus(status: boolean) {
-    return cy.get(this.todoStatusFilter).type(status.toString());
+  filterByStatus(status: string) {
+    cy.get(this.todoStatusFilter).click().then(() => {
+      return cy.get(`[value="${status}"]`).click();
+    })
   }
 
 
