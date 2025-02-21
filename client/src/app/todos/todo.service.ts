@@ -17,6 +17,10 @@ export class TodoService {
   private readonly categoryKey = 'category';
   private readonly ownerKey = 'owner';
   private readonly statusKey = 'status';
+  private readonly limitKey = 'limit';
+  private readonly sortKey = 'orderBy';
+
+
 
 
 
@@ -25,7 +29,7 @@ export class TodoService {
   }
 
 
-  getTodos(filters?: { owner?: string; status?: boolean; category?: string }): Observable<Todo[]> {
+  getTodos(filters?: { owner?: string; status?: boolean; category?: string; sort?: string; limit?: string }): Observable<Todo[]> {
 
     let httpParams: HttpParams = new HttpParams();
     if (filters) {
@@ -34,6 +38,12 @@ export class TodoService {
       }
       if (filters.status !== undefined) {
         httpParams = httpParams.set('status', filters.status);
+      }
+      if (filters.sort) {
+        httpParams = httpParams.set(this.sortKey, filters.sort);
+      }
+      if (filters.limit) {
+        httpParams = httpParams.set(this.limitKey, filters.limit);
       }
       if (filters.category) {
         httpParams = httpParams.set(this.categoryKey, filters.category);
@@ -75,10 +85,6 @@ export class TodoService {
       filteredTodos = filteredTodos.filter(todo => todo.body.toLowerCase().indexOf(filters.body) !== -1);
     }
 
-    // // Filter by status
-    // if (filters.status !== undefined) {
-    //  HttpParams = httpParams.set('status', filters.status);
-    // }
      return filteredTodos;
    }
 
