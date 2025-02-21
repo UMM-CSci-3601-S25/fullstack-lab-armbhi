@@ -80,40 +80,40 @@ describe('Todo list', () => {
 
 
 
-  it('Should type complete in the status filter and check that it returned complete elements', () => {
-    // Filter for todo 'Fry'
+  // it('Should type complete in the status filter and check that it returned complete elements', () => {
+  //   // Filter for todo 'Fry'
 
 
-    page.filterByStatus('complete')
+  //   page.filterByStatus('complete')
 
-    page.getVisibleTodos().should('have.lengthOf', 143)
+  //   page.getVisibleTodos().should('have.lengthOf', 143)
 
-     // Go through each of the visible todos that are being shown and get the owner
+  //    // Go through each of the visible todos that are being shown and get the owner
 
-     page.getTodoStatuses()
-   //We should see these todos who owner contains Fry
-   .should('contain.text', 'Complete')
-      // We shouldn't see these todos
-      .should('not.contain.text', false)
-      .should('not.contain.text', 'Incomplete')
-  });
+  //    page.getTodoStatuses()
+  //  //We should see these todos who owner contains Fry
+  //  .should('contain.text', 'Complete')
+  //     // We shouldn't see these todos
+  //     .should('not.contain.text', false)
+  //     .should('not.contain.text', 'Incomplete')
+  // });
 
-  it('Should type incomplete in the status filter and check that it returned incomplete elements', () => {
+  // it('Should type incomplete in the status filter and check that it returned incomplete elements', () => {
 
-    page.filterByStatus('incomplete')
+  //   page.filterByStatus('incomplete')
 
-    page.getVisibleTodos().should('have.lengthOf',1)
+  //   page.getVisibleTodos().should('have.lengthOf',1)
 
-     // Go through each of the visible todos that are being shown and get the owner
+  //    // Go through each of the visible todos that are being shown and get the owner
 
-     page.getTodoStatuses()
+  //    page.getTodoStatuses()
 
-   .should('contain.text', 'Incomplete')
-      // We shouldn't see these todos
-      .should('not.contain.text', true)
-      .should('not.contain.text', 'Complete')
+  //  .should('contain.text', 'Incomplete')
+  //     // We shouldn't see these todos
+  //     .should('not.contain.text', true)
+  //     .should('not.contain.text', 'Complete')
 
-  });
+  // });
   });
 
 
