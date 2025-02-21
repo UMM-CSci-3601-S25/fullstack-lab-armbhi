@@ -57,21 +57,18 @@ export class TodoListComponent {
   constructor(private todoService: TodoService, private snackBar: MatSnackBar) {
 
   }
-    private todoBody$ = toObservable(this.todoBody);
-    private todoOwner$ = toObservable(this.todoOwner);
+    private todoStatus$ = toObservable(this.todoStatus);
     private todoCategory$ = toObservable(this.todoCategory);
-
-
 
     serverFilteredTodos =
 
       toSignal(
-        combineLatest([this.todoCategory$, this.todoOwner$]).pipe(
+        combineLatest([this.todoCategory$, this.todoStatus$]).pipe(
 
-          switchMap(([category,owner]) =>
+          switchMap(([category, status]) =>
             this.todoService.getTodos({
               category,
-              owner,
+              status,
             })
           ),
 
@@ -97,11 +94,7 @@ export class TodoListComponent {
         const serverFilteredTodos = this.serverFilteredTodos();
         return this.todoService.filterTodos(serverFilteredTodos, {
           owner: this.todoOwner(),
-          category: this.todoCategory(),
           body:this.todoBody(),
-          status:this.todoStatus(),
-
-
         });
       });
   }

@@ -17,22 +17,6 @@
             <mat-hint>Filtered on client</mat-hint>
           </mat-form-field>
 
-
-
-          <mat-form-field class="input-field">
-            <mat-label>Category</mat-label>
-            <input matInput data-test="todoCategoryFilter" placeholder="Filter by category"
-             [(ngModel)]="todoCategory">
-            <mat-hint>Filtered on client</mat-hint>
-          </mat-form-field>
-
-          <mat-form-field class="input-field">
-            <mat-label>Status</mat-label>
-            <input matInput data-test="todoStatusFilter" placeholder="Filter by status"
-             [(ngModel)]="todoStatus">
-            <mat-hint>Filtered on client</mat-hint>
-          </mat-form-field>
-
           <mat-form-field class="input-field">
             <mat-label>Body</mat-label>
             <input matInput data-test="todoBodyFilter" placeholder="Filter by Body"
@@ -54,11 +38,19 @@
               <mat-option value="groceries">Groceries</mat-option>
               <mat-option value="homework">Homework</mat-option>
               <mat-option value="software design">Software design</mat-option>
-
             </mat-select>
             <mat-hint>Filtered on server</mat-hint>
           </mat-form-field>
 
+          <mat-form-field class="input-field">
+            <mat-label>Status</mat-label>
+            <mat-select [(ngModel)]="todoStatus" data-test="todoStatusSelect">
+              <mat-option>--</mat-option>
+              <mat-option value="complete">Complete</mat-option>
+              <mat-option value="incomplete">Incomplete</mat-option>
+            </mat-select>
+            <mat-hint>Filtered on server</mat-hint>
+          </mat-form-field>
         </div>
 
         <div data-test="todoListTitle">Todos</div>
@@ -71,9 +63,10 @@
                     <li><div data-test="todoOwner">Owner: {{ todo.owner }}</div></li>
                     <li><div data-test="todoCategory">Category: {{ todo.category }}</div></li>
                     <li><div data-test="todoBody">Body: {{ todo.body }}</div></li>
-                    <li><div data-test="todoStatus">Status: {{ todo.status }}</div></li>
+                    <li><div data-test="todoStatus">Status: {{ todo.status===true ? 'Complete' : 'Incomplete' }}</div></li>
                   </ul>
                 </li>
+
               }
 
             </ol>
