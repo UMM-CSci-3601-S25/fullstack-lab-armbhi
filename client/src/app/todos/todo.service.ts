@@ -75,10 +75,7 @@ export class TodoService {
       filteredTodos = filteredTodos.filter(todo => todo.body.toLowerCase().indexOf(filters.body) !== -1);
     }
 
-    // // Filter by status
-    // if (filters.status !== undefined) {
-    //  HttpParams = httpParams.set('status', filters.status);
-    // }
+
      return filteredTodos;
    }
 
